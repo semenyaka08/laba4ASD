@@ -10,9 +10,8 @@ public class Vertex
     }
     public readonly int CurrentId;
 
-    private static int _id = 1;
-    public int Value { get; set; }
+    public static int _id = 1;
+    public int Value { get; }
     
-    
-    public List<Edge> Edges = new List<Edge>();
+    public readonly List<Edge> Edges = new List<Edge>();
 }

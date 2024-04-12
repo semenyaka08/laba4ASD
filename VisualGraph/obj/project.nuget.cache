@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YGTRPZ4m2cHMrKsQ60rRLiXN6j5nqLEocs/yDRr/COtFl8rRjpRrO3nqO27DwTKIyneZDvUYps4DhBum/oIv7w==",
+  "dgSpecHash": "phS9jcXvM4bwhORDSkwYFr7CA/QLSRjUYYTlzALpHG5r1WPqWCBX7YWqsfTsjEMg5AZMzOgzwTCiFNbvVU9whA==",
   "success": true,
-  "projectFilePath": "E:\\CodeInRider\\GraphExploring\\VisualGraph\\VisualGraph.csproj",
+  "projectFilePath": "E:\\CodeInRider\\laba4\\Graph-Visualization\\VisualGraph\\VisualGraph.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

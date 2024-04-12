@@ -5,7 +5,10 @@ public class Graph
     public Graph(bool isDirected)
     {
         IsDirected = isDirected;
+        Vertex._id = 1;
     }
+
+    public double K { private get; set; } = 1.0 - 2 * 0.01 - 1 * 0.01 - 0.3;
     
     public readonly bool IsDirected;
     
@@ -29,7 +32,7 @@ public class Graph
     
     public void AddVertex(int value)
     {
-        Vertex newVertex = new Vertex(value);
+        var newVertex = new Vertex(value);
         Vertices.Add(newVertex);
     }
 
@@ -38,14 +41,14 @@ public class Graph
         if (Edges.Any(edge => edge.From == v1 && edge.To == v2))
             return;
         
-        Edge firstEdge = new Edge(v1, v2);
+        var firstEdge = new Edge(v1, v2);
         Edges.Add(firstEdge);
         v1.Edges.Add(firstEdge);
 
         if (!IsDirected)
         {
             if(v1 == v2) return;
-            Edge secondEdge = new Edge(v2, v1);
+            var secondEdge = new Edge(v2, v1);
             Edges.Add(secondEdge);
             v2.Edges.Add(secondEdge);
         }
@@ -53,9 +56,9 @@ public class Graph
 
     private void MatrixGenerationGraph(int[,] matrix)
     {
-        for (int i = 0;i<matrix.GetLength(0);i++)
+        for (var i = 0;i<matrix.GetLength(0);i++)
         {
-            for (int z =0;z<matrix.GetLength(1);z++)
+            for (var z =0;z<matrix.GetLength(1);z++)
             {
                 if (matrix[i,z] == 1)
                 {
@@ -67,17 +70,17 @@ public class Graph
 
     private int[,] MatrixForDirected()
     {
-        int variant = 3421;
+        var variant = 3421;
         
-        int n = 12; 
-        int[,] adjacencyMatrix = new int[n, n];
-        Random rnd = new Random(variant);
+        var n = 12; 
+        var adjacencyMatrix = new int[n, n];
+        var rnd = new Random(variant);
         
-        double k = 1.0 - 2 * 0.02 - 1 * 0.005 - 0.25;
+        var k = K;
         
-        for (int i = 0; i < n; i++)
+        for (var i = 0; i < n; i++)
         {
-            for (int j = 0; j < n; j++)
+            for (var j = 0; j < n; j++)
             {
                 adjacencyMatrix[i, j] = Round( (rnd.NextDouble() * 2.0) * k);
             }
@@ -88,12 +91,12 @@ public class Graph
 
     private int[,] MatrixForUnDirected(int[,] adjacencyMatrix)
     {
-        int n = 12;
-        int[,] undirectedAdjMatrix = new int[n, n]; 
+        var n = 12;
+        var undirectedAdjMatrix = new int[n, n]; 
 
-        for (int i = 0; i < n; i++)
+        for (var i = 0; i < n; i++)
         {
-            for (int j = 0; j < n; j++)
+            for (var j = 0; j < n; j++)
             {
                 if (adjacencyMatrix[i, j] == 1 )
                 {

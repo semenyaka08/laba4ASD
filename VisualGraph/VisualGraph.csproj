@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GraphImplementation\GraphImplementation.csproj" />
+      <ProjectReference Include="..\MatrixLibrary\MatrixLibrary.csproj" />
     </ItemGroup>
 
 </Project>

@@ -8,15 +8,24 @@
     ".NETCoreApp,Version=v8.0": {
       "VisualGraph/1.0.0": {
         "dependencies": {
-          "GraphImplementation": "1.0.0"
+          "GraphImplementation": "1.0.0",
+          "MatrixLibrary": "1.0.0"
         },
         "runtime": {
           "VisualGraph.dll": {}
         }
       },
       "GraphImplementation/1.0.0": {
+        "dependencies": {
+          "MatrixLibrary": "1.0.0"
+        },
         "runtime": {
           "GraphImplementation.dll": {}
+        }
+      },
+      "MatrixLibrary/1.0.0": {
+        "runtime": {
+          "MatrixLibrary.dll": {}
         }
       }
     }
@@ -28,6 +37,11 @@
       "sha512": ""
     },
     "GraphImplementation/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MatrixLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

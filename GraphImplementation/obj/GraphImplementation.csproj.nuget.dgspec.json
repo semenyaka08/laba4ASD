@@ -1,17 +1,80 @@
 {
   "format": 1,
   "restore": {
-    "E:\\CodeInRider\\GraphExploring\\GraphImplementation\\GraphImplementation.csproj": {}
+    "E:\\CodeInRider\\laba4\\Graph-Visualization\\GraphImplementation\\GraphImplementation.csproj": {}
   },
   "projects": {
-    "E:\\CodeInRider\\GraphExploring\\GraphImplementation\\GraphImplementation.csproj": {
+    "E:\\CodeInRider\\laba4\\Graph-Visualization\\GraphImplementation\\GraphImplementation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CodeInRider\\GraphExploring\\GraphImplementation\\GraphImplementation.csproj",
+        "projectUniqueName": "E:\\CodeInRider\\laba4\\Graph-Visualization\\GraphImplementation\\GraphImplementation.csproj",
         "projectName": "GraphImplementation",
-        "projectPath": "E:\\CodeInRider\\GraphExploring\\GraphImplementation\\GraphImplementation.csproj",
+        "projectPath": "E:\\CodeInRider\\laba4\\Graph-Visualization\\GraphImplementation\\GraphImplementation.csproj",
         "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
-        "outputPath": "E:\\CodeInRider\\GraphExploring\\GraphImplementation\\obj\\",
+        "outputPath": "E:\\CodeInRider\\laba4\\Graph-Visualization\\GraphImplementation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Сергей\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\CodeInRider\\laba4\\Graph-Visualization\\MatrixLibrary\\MatrixLibrary.csproj": {
+                "projectPath": "E:\\CodeInRider\\laba4\\Graph-Visualization\\MatrixLibrary\\MatrixLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\CodeInRider\\laba4\\Graph-Visualization\\MatrixLibrary\\MatrixLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\CodeInRider\\laba4\\Graph-Visualization\\MatrixLibrary\\MatrixLibrary.csproj",
+        "projectName": "MatrixLibrary",
+        "projectPath": "E:\\CodeInRider\\laba4\\Graph-Visualization\\MatrixLibrary\\MatrixLibrary.csproj",
+        "packagesPath": "C:\\Users\\Сергей\\.nuget\\packages\\",
+        "outputPath": "E:\\CodeInRider\\laba4\\Graph-Visualization\\MatrixLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
