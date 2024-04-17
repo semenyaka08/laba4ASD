@@ -9,6 +9,8 @@ public class Graph
     }
 
     public double K { private get; set; } = 1.0 - 2 * 0.01 - 1 * 0.01 - 0.3;
+
+    public bool isCondensation = false;
     
     public readonly bool IsDirected;
     
@@ -72,7 +74,7 @@ public class Graph
     {
         var variant = 3421;
         
-        var n = 12; 
+        var n = Vertices.Count; 
         var adjacencyMatrix = new int[n, n];
         var rnd = new Random(variant);
         

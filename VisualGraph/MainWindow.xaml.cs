@@ -12,7 +12,7 @@ public partial class MainWindow
 {
     private readonly Graph _graph = new Graph(true);
 
-    private List<List<int>> result;
+    private List<List<int>> _result;
     
     public MainWindow()
     {
@@ -105,13 +105,13 @@ public partial class MainWindow
         
         foreach (var item in doublePaths)
         {
-            Console.WriteLine(item.First.Value + " " + item.First.Next.Value + " " + item.Last.Value);
+            Console.WriteLine(item.First.Value + " - " + item.First.Next.Value + " - " + item.Last.Value);
         }
         Console.WriteLine("      **шляхи довжиною 3**    ");
         
         foreach (var item in triplePaths)
         {
-            Console.WriteLine(item.First.Value + " " + item.First.Next.Value + " " + item.Last.Previous.Value + " " + item.Last.Value);
+            Console.WriteLine(item.First.Value + " - " + item.First.Next.Value + " - " + item.Last.Previous.Value + " - " + item.Last.Value);
         }
 
         Console.WriteLine("\n          **Матриця досяжності** \n  ");
@@ -140,14 +140,14 @@ public partial class MainWindow
         }
         
         Console.WriteLine("\n          **Компоненти сильної зв'язності** \n  ");
-        result = FindEqualRows(reachableMatrix);
+        _result = FindEqualRows(reachableMatrix);
         
-        for (int i = 0; i < result.Count; i++)
+        for (int i = 0; i < _result.Count; i++)
         {
             Console.Write("Компонента №" + (i + 1) + ": ");
-            for (int j = 0; j < result[i].Count; j++)
+            for (int j = 0; j < _result[i].Count; j++)
             {
-                Console.Write(result[i][j] + ", ");
+                Console.Write(_result[i][j] + ", ");
             }
             Console.WriteLine();
         }
@@ -168,11 +168,13 @@ public partial class MainWindow
     {
         await Task.Delay(500);
         Canvas.Children.RemoveRange(0,Canvas.Children.Count);
-        Graph condensationGraph = new Graph(true);
-        for (int i = 0;i<result.Count;i++)
+        Graph condensationGraph = new Graph(true){isCondensation = true};
+        for (int i = 0;i<_result.Count;i++)
         {
             condensationGraph.AddVertex(i+1);
+            if(i>0) condensationGraph.AddEdge(condensationGraph.Vertices.First(p=>p.Value == i), condensationGraph.Vertices.First(p=>p.Value == i+1));
         }
+        
         DrawGraph(condensationGraph);
     }
     
@@ -185,11 +187,9 @@ public partial class MainWindow
         {
             List<int> currentEqualRows = new List<int>();
 
-            // Пропускаємо рядки, які вже були порівняні
             if (visited.Contains(i.ToString()))
                 continue;
 
-            // Додаємо індекс поточного рядка до списку
             currentEqualRows.Add(i + 1);
 
             for (int j = i + 1; j < matrix.GetLength(0); j++)
@@ -311,6 +311,9 @@ public partial class MainWindow
     
     private void ArrangeVerticesInCircle(double centreX,double centreY,int radius, Dictionary<Vertex, Coordinates> dictionary,Graph graph)
     {
+        string? k = null;
+        if (graph.isCondensation) k = "K";
+        
         var angleIncrement = 360 / graph.Vertices.Count;
         for (var i = 0; i < graph.Vertices.Count; i++)
         {
@@ -322,11 +325,11 @@ public partial class MainWindow
 
             var coordinates = new Coordinates(x, y);
             dictionary.Add(graph.Vertices.First(p=>p.CurrentId == i+1), coordinates);
-            DrawVertex(coordinates, graph.Vertices.First(p=>p.CurrentId == i+1));
+            DrawVertex(coordinates, graph.Vertices.First(p=>p.CurrentId == i+1), k);
         }
     }
     
-    private void DrawVertex(Coordinates coordinates, Vertex vertex)
+    private void DrawVertex(Coordinates coordinates, Vertex vertex, string k)
     {
         var ellipse = new Ellipse
         {
@@ -343,7 +346,7 @@ public partial class MainWindow
         
         var textBlock = new TextBlock
         {
-            Text = vertex.Value.ToString(),
+            Text = k + vertex.Value.ToString(),
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center
         };
@@ -468,7 +471,7 @@ public partial class MainWindow
 
     private void DrawGraph(Graph graph)
     {
-        if (graph.Vertices.Count != 1)
+        if (!graph.isCondensation)
         {
             graph.GenerateMatrix();
         }
@@ -476,11 +479,7 @@ public partial class MainWindow
         var dictionary = new Dictionary<Vertex, Coordinates>();
         
         ArrangeVerticesInCircle(683, 352, 300, dictionary, graph);
-
-        if (graph.Vertices.Count == 1)
-        {
-            Console.WriteLine();
-        }
+        
         foreach (var edge in graph.Vertices.SelectMany(vertex => vertex.Edges))
         {
             DrawEdge(edge, dictionary);
